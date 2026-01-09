@@ -15,7 +15,7 @@ import java.util.Properties;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Testcontainers
-class MailCatcherContainerIT {
+class MailCatcherContainerTest {
 
 	@Container
 	static MailCatcherContainer mailCatcher = new MailCatcherContainer();
@@ -41,7 +41,7 @@ class MailCatcherContainerIT {
 		List<Message> messages = client.getAllMessages();
 		assertThat(messages).hasSize(1);
 
-		Message message = messages.getFirst();
+		Message message = messages.get(0);
 		assertThat(message.sender()).isEqualTo("<sender@example.com>");
 		assertThat(message.recipients()).containsExactly("<recipient@example.com>");
 		assertThat(message.subject()).isEqualTo("Test Subject");
@@ -63,7 +63,7 @@ class MailCatcherContainerIT {
 		List<Message> messages = client.getAllMessages();
 		assertThat(messages).hasSize(1);
 
-		Message message = messages.getFirst();
+		Message message = messages.get(0);
 		assertThat(message.recipients()).containsExactlyInAnyOrder("<alice@example.com>", "<bob@example.com>");
 	}
 
@@ -92,7 +92,7 @@ class MailCatcherContainerIT {
 		sendEmail("sender@example.com", "recipient@example.com", "Source Test", "Test body");
 
 		List<Message> messages = client.getAllMessages();
-		String source = client.getMessageSource(messages.getFirst().id());
+		String source = client.getMessageSource(messages.get(0).id());
 
 		assertThat(source).contains("From: sender@example.com")
 			.contains("To: recipient@example.com")
