@@ -3,7 +3,7 @@
 A [Testcontainers](https://www.testcontainers.org/) module for [MailCatcher](https://mailcatcher.me/) - a simple SMTP server that catches all mail sent to it and displays it in a web interface.
 
 ## Installation
- 
+
 Add the following dependency to your `pom.xml`:
 
 ```xml
