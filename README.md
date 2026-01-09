@@ -1,6 +1,7 @@
 # Testcontainers MailCatcher
 
-A [Testcontainers](https://www.testcontainers.org/) module for [MailCatcher](https://mailcatcher.me/) - a simple SMTP server that catches all mail sent to it and displays it in a web interface.
+A [Testcontainers](https://www.testcontainers.org/) module for [MailCatcher](https://mailcatcher.me/) - a simple SMTP
+server that catches all mail sent to it and displays it in a web interface.
 
 ## Installation
 
@@ -21,6 +22,7 @@ Add the following dependency to your `pom.xml`:
 ### Basic Usage
 
 ```java
+
 @Testcontainers
 class EmailServiceTest {
 
@@ -50,6 +52,7 @@ class EmailServiceTest {
         assertThat(messages).hasSize(1);
         assertThat(messages.get(0).subject()).isEqualTo("Test Subject");
     }
+
 }
 ```
 
@@ -57,9 +60,9 @@ class EmailServiceTest {
 
 The `MailCatcherContainer` exposes two ports:
 
-| Port | Description |
-|------|-------------|
-| 1025 | SMTP port for sending emails |
+| Port | Description                              |
+|------|------------------------------------------|
+| 1025 | SMTP port for sending emails             |
 | 1080 | HTTP port for web interface and REST API |
 
 ```java
@@ -98,22 +101,26 @@ String plain = client.getMessagePlain(1);  // Plain text body
 String source = client.getMessageSource(1); // Raw email source
 
 // Delete messages
-client.deleteMessage(1);     // Delete specific message
-client.deleteAllMessages();  // Delete all messages
+client.
+
+deleteMessage(1);     // Delete specific message
+client.
+
+deleteAllMessages();  // Delete all messages
 ```
 
 ### Message Properties
 
 The `Message` record contains the following properties:
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `id` | `int` | Unique message identifier |
-| `sender` | `String` | Email sender address |
-| `recipients` | `List<String>` | List of recipient addresses |
-| `subject` | `String` | Email subject |
-| `size` | `String` | Message size |
-| `createdAt` | `Instant` | Timestamp when the message was received |
+| Property     | Type           | Description                             |
+|--------------|----------------|-----------------------------------------|
+| `id`         | `int`          | Unique message identifier               |
+| `sender`     | `String`       | Email sender address                    |
+| `recipients` | `List<String>` | List of recipient addresses             |
+| `subject`    | `String`       | Email subject                           |
+| `size`       | `String`       | Message size                            |
+| `createdAt`  | `Instant`      | Timestamp when the message was received |
 
 ## Requirements
 
