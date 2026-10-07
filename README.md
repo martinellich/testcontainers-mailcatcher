@@ -12,7 +12,7 @@ Add the following dependency to your `pom.xml`:
 <dependency>
     <groupId>ch.martinelli.oss</groupId>
     <artifactId>testcontainers-mailcatcher</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2</version>
     <scope>test</scope>
 </dependency>
 ```
